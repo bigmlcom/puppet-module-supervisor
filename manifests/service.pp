@@ -1,5 +1,6 @@
 define supervisor::service(
   $enable=true, $ensure=running,
+  $requires=[],
   $command, $numprocs=1, $priority=999,
   $autorestart="unexpected",
   $startsecs=1, $retries=3, $exitcodes="0,2",
@@ -57,7 +58,8 @@ define supervisor::service(
           start => "/usr/bin/supervisorctl start ${name}",
           status => "/usr/bin/supervisorctl status | awk '/^${name}/{print \$2}' | grep '^RUNNING$'",
           stop => "/usr/bin/supervisorctl stop ${name}",
-          require => [ Package["supervisor"], Service["supervisor"] ];
+          require => [ Package["supervisor"], Service["supervisor"] ],
+          require => $requires;
       }
     }
   }

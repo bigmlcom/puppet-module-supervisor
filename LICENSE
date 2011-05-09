@@ -1,6 +1,11 @@
 Copyright (c) 2010, Digg, Inc.
 All rights reserved.
 
+Copyright (c) 2011, BigML, Inc.
+- updated module to work with current puppet version
+- extended supervisor template to work with extra required types
+
+
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
 met:
