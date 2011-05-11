@@ -28,7 +28,7 @@ class supervisor {
       enable => true,
       ensure => running,
       hasrestart => false,
-      require => Package["supervisor"],
+      require => [Package["supervisor"],$require],
       pattern => "/usr/bin/supervisord";
   }
 
