@@ -45,7 +45,7 @@ class supervisor {
       require => Service["supervisor"];
   }
   
-  define supervisor::service(
+  define supervisor_service(
     $enable=true, $ensure=running,
     $subscribes=[],
     $command, $numprocs=1, $priority=999,
