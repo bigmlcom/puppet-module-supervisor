@@ -10,7 +10,7 @@ class supervisor {
   }
 
   file {
-    $supervisor_conf:
+    $supervisor_conf_dir:
       purge => true,
       ensure => directory,
       require => Package["supervisor"];
