@@ -1,4 +1,5 @@
 /var/log/supervisor/supervisord.log /var/log/supervisor/*/*.out /var/log/supervisor/*/*.err {
+<%= supervisor_log%> <%supervisor_log_dir%>/*/*.out <%supervisor_log_dir%>/*/*.err {	
     rotate 5
     daily
     compress

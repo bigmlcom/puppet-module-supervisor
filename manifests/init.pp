@@ -1,3 +1,8 @@
+$supervisor_conf_dir = "/etc/supervisor"
+$supervisor_conf = "/etc/supervisor/supervisord.conf"
+$supervisor_log_dir = "/var/log/supervisor"
+$supervisor_run_dir = "/var/run/supervisor"
+
 class supervisor {
   package {
     "supervisor":
@@ -5,21 +10,21 @@ class supervisor {
   }
 
   file {
-    "/etc/supervisor":
+    $supervisor_conf:
       purge => true,
       ensure => directory,
       require => Package["supervisor"];
-    ["/var/log/supervisor",
-     "/var/run/supervisor"]:
+    [$supervisor_log_dir,
+     $supervisor_run_dir]:
        purge => true,
        backup => false,
        ensure => directory,
        require => Package["supervisor"];
-     "/etc/supervisor/supervisord.conf":
-       source => "puppet:///supervisor/supervisord.conf",
+     $supervisor_conf:
+       content => template("supervisor/supervisord.conf.erb"),
        require => Package["supervisor"];
      "/etc/logrotate.d/supervisor":
-       source => "puppet:///supervisor/logrotate",
+       content => template("supervisor/logrotate"),
        require => Package["supervisor"];
   }
 

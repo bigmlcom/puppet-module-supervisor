@@ -3,7 +3,8 @@ All rights reserved.
 
 Copyright (c) 2011, BigML, Inc.
 - updated module to work with current puppet version
-- extended supervisor template to work with extra required types
+- parameterized conf/log directories
+
 
 
 Redistribution and use in source and binary forms, with or without
