@@ -24,7 +24,7 @@ class supervisor {
        content => template("supervisor/supervisord.conf.erb"),
        require => Package["supervisor"];
      "/etc/logrotate.d/supervisor":
-       content => template("supervisor/logrotate"),
+       content => template("supervisor/logrotate.erb"),
        require => Package["supervisor"];
   }
 
